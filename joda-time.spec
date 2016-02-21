@@ -6,7 +6,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          2.2
-Release:          3.%{tzversion}.9%{?dist}
+Release:          3.%{tzversion}.10%{?dist}
 Summary:          Java date and time API
 
 License:          ASL 2.0
@@ -16,8 +16,8 @@ Source1:          ftp://ftp.iana.org/tz/releases/%{tzversion}.tar.gz
 BuildArch:        noarch
 
 BuildRequires:    %{?scl_prefix_java_common}maven-local
-BuildRequires:    maven30-joda-convert
-BuildRequires:    maven30-exec-maven-plugin
+BuildRequires:    %{?scl_prefix}joda-convert
+BuildRequires:    %{?scl_prefix}exec-maven-plugin
 
 
 %description
@@ -38,7 +38,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 sed -i 's/\r//' LICENSE.txt
 sed -i 's/\r//' NOTICE.txt
@@ -56,13 +56,13 @@ tar -xzf %{SOURCE1} -C src/main/java/org/joda/time/tz/src/
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -74,6 +74,9 @@ set -e -x
 %doc LICENSE.txt NOTICE.txt
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.2-3.tzdata2013c.10
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 2.2-3.tzdata2013c.9
 - maven33 rebuild
 
