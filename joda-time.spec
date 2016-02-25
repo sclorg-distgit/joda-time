@@ -6,7 +6,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          2.2
-Release:          3.%{tzversion}.10%{?dist}
+Release:          3.%{tzversion}.11%{?dist}
 Summary:          Java date and time API
 
 License:          ASL 2.0
@@ -15,7 +15,7 @@ Source0:          http://downloads.sourceforge.net/%{pkg_name}/%{pkg_name}-%{ver
 Source1:          ftp://ftp.iana.org/tz/releases/%{tzversion}.tar.gz
 BuildArch:        noarch
 
-BuildRequires:    %{?scl_prefix_java_common}maven-local
+BuildRequires:    %{?scl_prefix}maven-local
 BuildRequires:    %{?scl_prefix}joda-convert
 BuildRequires:    %{?scl_prefix}exec-maven-plugin
 
@@ -74,6 +74,9 @@ set -e -x
 %doc LICENSE.txt NOTICE.txt
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.2-3.tzdata2013c.11
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.2-3.tzdata2013c.10
 - maven33 rebuild #2
 
