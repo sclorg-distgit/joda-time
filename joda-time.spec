@@ -5,7 +5,7 @@
 
 Name:             %{?scl_prefix}joda-time
 Version:          2.9.3
-Release:          3.%{tzversion}.1%{?dist}
+Release:          3.%{tzversion}.2%{?dist}
 Summary:          Java date and time API
 
 License:          ASL 2.0
@@ -68,6 +68,9 @@ tar -xzf %{SOURCE1} -C src/main/java/org/joda/time/tz/src/
 %doc LICENSE.txt NOTICE.txt
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 2.9.3-3.tzdata2016c.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 2.9.3-3.tzdata2016c.1%{?dist}
 - Automated package import and SCL-ization
 
